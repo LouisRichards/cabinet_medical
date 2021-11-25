@@ -1,9 +1,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
 }
 
 header {
@@ -128,4 +126,8 @@ input[type="text"],
 
 .icon {
   max-height: 10px;
+}
+
+.medecins-table {
+  background-color: #1abc9c;
 }

@@ -29,33 +29,62 @@
 </header>
 
 <body>
-    <h1>Ajouter un usager</h1>
-    <form action="./ajoutUsager.php" method="post">
-        <label>Numero de sécurité: </label>
-        <input pattern="[0-9]{15}" type="number" name="num-secu" placeholder="0 11 22 33 444 555 66"><br>
-        <label>Civilité: </label>
-        <input type="text" name="civilite" placeholder="Monsieur"><br>
-        <label>Nom: </label>
-        <input type="text" name="nom" placeholder="Dupont"><br>
-        <label>Prénom: </label>
-        <input type="text" name="prenom" placeholder="Jean"><br>
-        <label>Adresse: </label>
-        <input type="text" name="adresse" placeholder="123 rue du chemin"><br>
-        <label>Date de naissance: </label>
-        <input type="date" name="date-naissance"><br>
-        <label>Lieu de naissance: </label>
-        <input type="text" name="lieu-naissance" placeholder="Toulouse"><br>
-        <input type="submit" name="submit" value="Valider">
-        <input type="reset" name="reset" value="Reset">
-    </form>
+    <?php
+    $server = "localhost";
+    $login = "root";
+    $mdp = "";
+    $db = "cabinet";
 
-    <h1>Rechercher un usager</h1>
-    <form action="./rechercherUsager.php" method="post">
-        <label>Nom: </label>
-        <input type="text" name="nom" placeholder="Dupont"><br>
-        <input type="submit" name="submit" value="Valider">
-        <input type="reset" name="reset" value="Reset">
-    </form>
+    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
+
+    if ($link->connect_errno) {
+        echo "Failed to connect to MySQL: " . $link->connect_error;
+        exit();
+    }
+
+
+    $requete = 'SELECT * FROM usager';
+
+    ?>
+
+    <table class="usager-table">
+        <tr>
+            <th>Numéro de sécurité sociale</th>
+            <th>Civilité</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>Date de naissance</th>
+            <th>Lieu de naissance</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+
+        <?php
+
+        if (!$resquery = mysqli_query($link, $requete)) {
+            die("Error:" . mysqli_errno($link) . ":" . mysqli_error($link));
+        } else {
+            ///Traitement de la requête
+            while ($row = mysqli_fetch_row($resquery)) {
+                echo
+                "
+      <tr>
+        <td>" . $row[1] . "</td>
+        <td>" . $row[2] . "</td>
+        <td>" . $row[3] . "</td>
+        <td>" . $row[4] . "</td>
+        <td>" . $row[5] . "</td>
+        <td>" . $row[6] . "</td>
+        <td>" . $row[7] . "</td>
+        <td><a href='./modifierUsager.php?id=" . $row[0] . "'>Modifier </a>
+        <td><a href='./supprimerUsager.php?id=" . $row[0] . "'>Suprimer </a>
+      </tr>
+    ";
+            }
+        }
+        ?>
+    </table>
 </body>
 
 </html>

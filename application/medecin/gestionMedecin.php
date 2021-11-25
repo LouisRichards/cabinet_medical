@@ -29,25 +29,52 @@
 </header>
 
 <body>
-    <h1>Ajouter un médecin</h1>
-    <form action="./ajoutMedecin.php" method="post">
-        <label>Civilité: </label>
-        <input type="text" name="civilite" placeholder="Monsieur"><br>
-        <label>Nom: </label>
-        <input type="text" name="nom" placeholder="Dupont"><br>
-        <label>Prénom: </label>
-        <input type="text" name="prenom" placeholder="Jean"><br>
-        <input type="submit" name="submit" value="Valider">
-        <input type="reset" name="reset" value="Reset">
-    </form>
+    <?php
+    $server = "localhost";
+    $login = "root";
+    $mdp = "";
+    $db = "cabinet";
 
-    <h1>Rechercher un médecin</h1>
-    <form action="./rechercherMedecin.php" method="post">
-        <label>Nom: </label>
-        <input type="text" name="nom" placeholder="Dupont"><br>
-        <input type="submit" name="submit" value="Valider">
-        <input type="reset" name="reset" value="Reset">
-    </form>
+    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
+
+    if ($link->connect_errno) {
+        echo "Failed to connect to MySQL: " . $link->connect_error;
+        exit();
+    }
+
+    $requete = 'SELECT * FROM medecin';
+
+    ?>
+
+    <table class="medecins-table">
+        <tr>
+            <th>Civilité</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+
+        <?php
+
+        if (!$resquery = mysqli_query($link, $requete)) {
+            die("Error:" . mysqli_errno($link) . ":" . mysqli_error($link));
+        } else {
+            ///Traitement de la requête
+            while ($row = mysqli_fetch_row($resquery)) {
+                echo
+
+                "<tr>
+        <td>" . $row[1] . "</td>
+        <td>" . $row[2] . "</td>
+        <td>" . $row[3] . "</td>
+        <td><a href='./modifierMedecin.php?id=" . $row[0] . "'>Modifier </a>
+        <td><a href='./supprimerMedecin.php?id=" . $row[0] . "'>Suprimer </a>
+      </tr>";
+            }
+        }
+        ?>
+    </table>
 </body>
 
 </html>
