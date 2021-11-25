@@ -1,0 +1,131 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1%;
+  background: #1abc9c;
+}
+
+.logo {
+  margin: 1%;
+  color: white;
+  text-transform: capitalize;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+}
+
+.nav-link {
+  text-transform: capitalize;
+  text-decoration: none;
+  color: white;
+  padding: 5%;
+}
+
+.nav-link:visited {
+  color: white;
+}
+
+.logo-link:visited {
+  color: white;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: grey;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.ajouter {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-around;
+  margin: 5%;
+}
+
+.ajouter-titre {
+  text-align: center;
+  font-weight: bold;
+  margin-top: -2%;
+}
+
+.ajouter-usager {
+  background-color: lightgrey;
+  border-radius: 5%;
+  padding: 3%;
+}
+
+.ajouter-medecin {
+  background-color: lightgrey;
+  border-radius: 5%;
+  padding: 3%;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+}
+
+.small-button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+input[type="text"],
+[type="number"],
+[type="date"] {
+  background-color: white;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 3px;
+  padding: 1px;
+  margin: 2px;
+}
+
+.small-button {
+  background-color: #1abc9c;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 4% 8%;
+  text-decoration: none;
+  margin: 3% 1%;
+  cursor: pointer;
+  width: 40%;
+}
+
+.rechercher {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-around;
+  margin: 5%;
+}
+
+.search {
+  width: 10;
+}
+
+.icon {
+  max-height: 10px;
+}
