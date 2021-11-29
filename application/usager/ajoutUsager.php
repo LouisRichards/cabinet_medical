@@ -16,17 +16,21 @@ $civilite = $_POST['civilite'];
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $adresse = $_POST['adresse'];
+$ville = $_POST['ville'];
+$code_postal = $_POST['code_postal'];
 $date_naissance = $_POST['date-naissance'];
 $lieu_naissance = $_POST['lieu-naissance'];
 
-$requete = 'INSERT INTO Usager (num_secu, civilite, nom, prenom, adresse, date_naissance, lieu_naissance)
+$requete = 'INSERT INTO Usager (num_secu, civilite, nom, prenom, adresse, date_naissance, lieu_naissance, ville, code_postal)
             VALUES ("' . $num_secu . '",
                     "' . $civilite . '",
                     "' . $nom . '",
                     "' . $prenom . '",
                     "' . $adresse . '", 
                     "' . $date_naissance . '",
-                    "' . $lieu_naissance . '"
+                    "' . $lieu_naissance . '",
+                    "' . $ville . '",
+                    "' . $code_postal . '"
                 );';
 
 if (!$resquery = mysqli_query($link, $requete)) {

@@ -21,7 +21,7 @@ header {
 .nav-menu {
   display: flex;
   flex-direction: row;
-  width: 30%;
+  width: 35%;
 }
 
 .nav-link {
@@ -66,13 +66,7 @@ body {
   margin-top: -2%;
 }
 
-.ajouter-usager {
-  background-color: lightgrey;
-  border-radius: 5%;
-  padding: 3%;
-}
-
-.ajouter-medecin {
+.ajouter-usager .ajouter-medecin .ajouter-rdv {
   background-color: lightgrey;
   border-radius: 5%;
   padding: 3%;
@@ -89,7 +83,7 @@ label {
   justify-content: center;
 }
 
-input[type="text"],
+input.ajouter-input[type="text"],
 [type="number"],
 [type="date"] {
   background-color: white;
@@ -120,14 +114,71 @@ input[type="text"],
   margin: 5%;
 }
 
-.search {
+.search-ajouter {
   width: 10;
 }
 
-.icon {
+.icon-search-ajouter {
   max-height: 10px;
 }
 
-.medecins-table {
+.table {
+  width: 95%;
+  margin: 2.5%;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+.table-header {
   background-color: #1abc9c;
+  color: white;
+}
+
+.rechercher-large {
+  margin: 2.5%;
+}
+.rechercher-large-bar {
+  width: 25%;
+  padding: 0.5%;
+  border-radius: 10px;
+  border-color: #1abc9c;
+}
+
+.search-large {
+  width: 45px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-large {
+  max-height: 25px;
+}
+
+.ajouter-usager-link {
+  background-color: lightgrey;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: white;
+  border-radius: 5%;
+  padding: 3%;
+}
+
+.ajouter-medecin-link {
+  background-color: lightgrey;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: black;
+  border-radius: 5%;
+  padding: 3%;
+}
+
+.ajouter-usager-link:visited .ajouter-medecin-link:visited {
+  color: black;
 }

@@ -12,18 +12,18 @@
 <header>
     <div class="logo">
         <a class="logo-link" href="../index.php">
-            <h1>cabinet médical</h1>
+            <img src="../public/logo.png" />
         </a>
     </div>
     <div class="nav-menu">
         <a class="nav-link" href="../rendezvous/gestionRdv.php">
-            <h2>rendez-vous</h2>
+            <h2>consultations</h2>
         </a>
         <a class="nav-link" href="../usager/gestionUsager.php">
-            <h2>usager</h2>
+            <h2>usagers</h2>
         </a>
         <a class="nav-link" href="./gestionMedecin.php">
-            <h2>médecin</h2>
+            <h2>médecins</h2>
         </a>
     </div>
 </header>
@@ -42,12 +42,25 @@
         exit();
     }
 
-    $requete = 'SELECT * FROM medecin';
+    if (isset($_POST["nom"])) {
+        $requete = 'SELECT * FROM medecin WHERE nom = "' . $_POST["nom"] . '"';
+    } else {
+        $requete = 'SELECT * FROM medecin';
+    }
+
 
     ?>
 
-    <table class="medecins-table">
-        <tr>
+    <div class="rechercher-large">
+        <form action="./gestionUsager.php" method="post">
+            <input class="rechercher-large-bar" type="text" name="nom" placeholder="Nom">
+            <button class="search-large" type="submit">
+                <img class="icon-large" src="../public/search-icon.png" />
+            </button>
+        </form>
+    </div>
+    <table class="table">
+        <tr class="table-header">
             <th>Civilité</th>
             <th>Nom</th>
             <th>Prenom</th>
@@ -75,6 +88,27 @@
         }
         ?>
     </table>
+
+    <div class="ajouter">
+        <div class="ajouter-medecin">
+            <h1 class="ajouter-titre">Ajouter un médecin</h1>
+            <form class="ajouter-medecin-form" action="./ajoutMedecin.php" method="post">
+                <div>
+                    <label>Civilité: </label>
+                    <input class="ajouter-input" type="text" name="civilite" placeholder="Monsieur"><br>
+                    <label>Nom: </label>
+                    <input class="ajouter-input" type="text" name="nom" placeholder="Dupont"><br>
+                    <label>Prénom: </label>
+                    <input class="ajouter-input" type="text" name="prenom" placeholder="Jean"><br>
+                </div>
+                <div class="small-button-group">
+                    <input class="small-button" type="submit" name="submit" value="Valider">
+                    <input class="small-button" type="reset" name="reset" value="Reset">
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>

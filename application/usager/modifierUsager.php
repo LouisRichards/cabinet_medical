@@ -42,6 +42,10 @@
         <input type="text" name="prenom" value="<?php echo $row[4]; ?>"><br>
         <label>Adresse: </label>
         <input type="text" name="adresse" value="<?php echo $row[5]; ?>"><br>
+        <label>Ville: </label>
+        <input type="text" name="ville" value="<?php echo $row[10]; ?>"><br>
+        <label>Code postal: </label>
+        <input type="text" name="code_postal" value="<?php echo $row[9]; ?>"><br>
         <label>Date de naissance: </label>
         <input type="date" name="date-naissance" value="<?php echo $row[6]; ?>"><br>
         <label>Lieu de naissance: </label>
@@ -57,6 +61,8 @@
     $nom = isset($_POST['nom']) ? $_POST['nom'] : $row[3];
     $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : $row[4];
     $adresse = isset($_POST['adresse']) ? $_POST['adresse'] : $row[5];
+    $ville = isset($_POST['ville']) ? $_POST['ville'] : $row[10];
+    $code_postal = isset($_POST['code_postal']) ? $_POST['code_postal'] : $row[9];
     $date_naissance = isset($_POST['date-naissance']) ? $_POST['date-naissance'] : $row[6];
     $lieu_naissance = isset($_POST['lieu-naissance']) ? $_POST['lieu-naissance'] : $row[7];
 
@@ -69,7 +75,9 @@
     prenom="' . $prenom . '", 
     adresse="' . $adresse . '", 
     date_naissance = "' . $date_naissance . '",
-    lieu_naissance = "' . $lieu_naissance . '"
+    lieu_naissance = "' . $lieu_naissance . '",
+    ville = "' . $ville . '",
+    code_postal = "' . $code_postal . '"
     WHERE id_usager = ' . $id . '';
 
     if (!$resquery = mysqli_query($link, $requete_modif)) {
