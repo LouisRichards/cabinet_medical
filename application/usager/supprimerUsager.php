@@ -16,7 +16,8 @@ $requete = 'DELETE FROM usager WHERE id_usager = "' . $_GET['id'] . '"';
 if (!$resquery = mysqli_query($link, $requete)) {
     die("Error:" . mysqli_errno($link) . ":" . mysqli_error($link));
 } else {
-    echo "Usager supprimé";
+    header("Location: ./gestionUsager.php");
+    exit();
 }
 ?>
 

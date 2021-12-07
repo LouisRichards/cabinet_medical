@@ -16,6 +16,9 @@
         </a>
     </div>
     <div class="nav-menu">
+        <a class="nav-link" href="../stats/stats.php">
+            <h2>Stats</h2>
+        </a>
         <a class="nav-link" href="../rendezvous/gestionRdv.php">
             <h2>consultations</h2>
         </a>

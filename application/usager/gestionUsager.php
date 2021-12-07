@@ -16,6 +16,9 @@
         </a>
     </div>
     <div class="nav-menu">
+        <a class="nav-link" href="../stats/stats.php">
+            <h2>Stats</h2>
+        </a>
         <a class="nav-link" href="../rendezvous/gestionRdv.php">
             <h2>consultations</h2>
         </a>
@@ -104,6 +107,23 @@
         ?>
     </table>
 
+    <?php
+    $server = "localhost";
+    $login = "root";
+    $mdp = "";
+    $db = "cabinet";
+
+    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
+
+    if ($link->connect_errno) {
+        echo "Failed to connect to MySQL: " . $link->connect_error;
+        exit();
+    }
+
+    $requete = 'SELECT * FROM medecin';
+
+    ?>
+
     <div class="ajouter">
         <div class="ajouter-usager">
             <h1 class="ajouter-titre">Ajouter un usager</h1>
@@ -126,6 +146,20 @@
                 <input class="ajouter-input" type="date" name="date-naissance"><br>
                 <label>Lieu de naissance: </label>
                 <input class="ajouter-input" type="text" name="lieu-naissance" placeholder="Toulouse"><br>
+                <label>Médecin: </label>
+                <select class="ajouter-input" name="medecin-traitant" class="ajouter-input">
+                    <?php
+                    if (!$resquery = mysqli_query($link, $requete)) {
+                        die("Error:" . mysqli_errno($link) . ":" . mysqli_error($link));
+                    } else {
+                        ///Traitement de la requête
+                        while ($row = mysqli_fetch_row($resquery)) {
+                            echo
+                            "<option class='ajouter-input' value='" . $row[0] . "' selected='selected'>" . $row[2] . " " . $row[3] . "</option>";
+                        }
+                    }
+                    ?>
+                </select>
                 <div class="small-button-group">
                     <input class="small-button" type="submit" name="submit" value="Valider">
                     <input class="small-button" type="reset" name="reset" value="Reset">

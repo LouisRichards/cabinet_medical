@@ -21,7 +21,7 @@ header {
 .nav-menu {
   display: flex;
   flex-direction: row;
-  width: 35%;
+  width: 46%;
 }
 
 .nav-link {
@@ -66,15 +66,44 @@ body {
   margin-top: -2%;
 }
 
-.ajouter-usager .ajouter-medecin .ajouter-rdv {
+.ajouter-usager {
   background-color: lightgrey;
-  border-radius: 5%;
+  border-radius: 10px;
   padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+}
+
+.ajouter-medecin {
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+}
+
+.ajouter-rdv {
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+}
+
+.ajouter-rdv-form {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
   display: inline-block;
-  width: 150px;
+  width: 400px;
 }
 
 .small-button-group {
@@ -159,26 +188,4 @@ input.ajouter-input[type="text"],
 
 .icon-large {
   max-height: 25px;
-}
-
-.ajouter-usager-link {
-  background-color: lightgrey;
-  text-transform: capitalize;
-  text-decoration: none;
-  color: white;
-  border-radius: 5%;
-  padding: 3%;
-}
-
-.ajouter-medecin-link {
-  background-color: lightgrey;
-  text-transform: capitalize;
-  text-decoration: none;
-  color: black;
-  border-radius: 5%;
-  padding: 3%;
-}
-
-.ajouter-usager-link:visited .ajouter-medecin-link:visited {
-  color: black;
 }
