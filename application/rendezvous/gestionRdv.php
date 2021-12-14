@@ -19,7 +19,7 @@
         <a class="nav-link" href="../stats/stats.php">
             <h2>Stats</h2>
         </a>
-        <a class="nav-link" href="./gestionRdv.php">
+        <a class="active" href="./gestionRdv.php">
             <h2>consultations</h2>
         </a>
         <a class="nav-link" href="../usager/gestionUsager.php">
@@ -125,7 +125,7 @@
                         }
                     }
                     ?>
-                </select>
+                </select><br>
                 <label>Médecin: </label>
                 <select class="ajouter-input" name="medecin" class="ajouter-input">
                     <?php
@@ -139,24 +139,24 @@
                         }
                     }
                     ?>
-                </select>
+                </select><br>
                 <label>Date du rendez-vous: </label>
                 <input class="ajouter-input" type="date" name="date-rdv"><br>
                 <label>Heure du rendez-vous: </label>
                 <input class="ajouter-input" type="time" name="heure-rdv"><br>
                 <label>Durée du rendez-vous: </label>
                 <?php
-                echo '<select name="heure" />';
+                echo '<select class="ajouter-input" name="heure" />';
                 for ($i = 0; $i < 25; $i++) {
                     echo '<option value="' . $i . '"> ' . $i . " heure" . '</option>';
                 }
-                echo '</select>';
+                echo '</select><br>';
                 foreach (array("min", "sec") as $name) {
-                    echo '<select name="' . $name . '" />';
+                    echo '<label></label><select class="ajouter-input" name="' . $name . '" />';
                     for ($i = 0; $i < 61; $i++) {
                         echo '<option value="' . $i . '"> ' . $i . " " . $name . '</option>';
                     }
-                    echo '</select>';
+                    echo '</select><br>';
                 }
                 ?>
                 <div class="small-button-group">

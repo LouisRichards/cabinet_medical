@@ -25,7 +25,7 @@
         <a class="nav-link" href="../usager/gestionUsager.php">
             <h2>usagers</h2>
         </a>
-        <a class="nav-link" href="./gestionMedecin.php">
+        <a class="active" href="./gestionMedecin.php">
             <h2>médecins</h2>
         </a>
     </div>

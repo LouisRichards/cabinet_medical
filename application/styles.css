@@ -24,6 +24,13 @@ header {
   width: 46%;
 }
 
+.active {
+  text-transform: capitalize;
+  text-decoration: underline;
+  color: white;
+  padding: 5%;
+}
+
 .nav-link {
   text-transform: capitalize;
   text-decoration: none;
@@ -43,7 +50,8 @@ header {
   text-decoration: none;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.active:hover {
   color: grey;
 }
 
@@ -56,7 +64,7 @@ body {
   display: flex;
   flex-direction: row;
   align-self: center;
-  justify-content: space-around;
+  justify-content: center;
   margin: 5%;
 }
 
@@ -66,26 +74,8 @@ body {
   margin-top: -2%;
 }
 
-.ajouter-usager {
-  background-color: lightgrey;
-  border-radius: 10px;
-  padding: 3%;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: center;
-}
-
-.ajouter-medecin {
-  background-color: lightgrey;
-  border-radius: 10px;
-  padding: 3%;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-content: center;
-}
-
+.ajouter-usager,
+.ajouter-medecin,
 .ajouter-rdv {
   background-color: lightgrey;
   border-radius: 10px;
@@ -96,14 +86,9 @@ body {
   justify-content: center;
 }
 
-.ajouter-rdv-form {
-  display: flex;
-  flex-direction: column;
-}
-
 label {
-  display: inline-block;
-  width: 400px;
+  display: inline-flex;
+  width: 200px;
 }
 
 .small-button-group {
@@ -112,15 +97,14 @@ label {
   justify-content: center;
 }
 
-input.ajouter-input[type="text"],
-[type="number"],
-[type="date"] {
+.ajouter-input {
   background-color: white;
   border-color: grey;
   border-width: 1px;
   border-radius: 3px;
   padding: 1px;
   margin: 2px;
+  width: 200px;
 }
 
 .small-button {

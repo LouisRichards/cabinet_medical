@@ -22,7 +22,7 @@
         <a class="nav-link" href="../rendezvous/gestionRdv.php">
             <h2>consultations</h2>
         </a>
-        <a class="nav-link" href="./gestionUsager.php">
+        <a class="active" href="./gestionUsager.php">
             <h2>usagers</h2>
         </a>
         <a class="nav-link" href="../medecin/gestionMedecin.php">
@@ -131,7 +131,10 @@
                 <label>Numero de sécurité: </label>
                 <input class="ajouter-input" pattern="[0-9]{15}" type="number" name="num-secu" placeholder="0 11 22 33 444 555 66"><br>
                 <label>Civilité: </label>
-                <input class="ajouter-input" type="text" name="civilite" placeholder="Monsieur"><br>
+                <select class="ajouter-input" name="civilite">
+                    <option class="ajouter-input" value="Monsieur" selected="selected">Monsieur</option>
+                    <option class="ajouter-input" value="Madame" selected="selected">Madame</option>
+                </select><br>
                 <label>Nom: </label>
                 <input class="ajouter-input" type="text" name="nom" placeholder="Dupont"><br>
                 <label>Prénom: </label>

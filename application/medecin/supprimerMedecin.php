@@ -11,13 +11,18 @@ if ($link->connect_errno) {
     exit();
 }
 
-$requete = 'DELETE FROM medecin WHERE id_medecin = "' . $_GET['id'] . '"';
+$requeteDelMedecin = 'DELETE FROM medecin WHERE id_medecin = "' . $_GET['id'] . '"';
+$requeteDelRDV = 'DELETE FROM rendez_vous WHERE id_medecin = "' . $_GET['id'] . '"';
 
-if (!$resquery = mysqli_query($link, $requete)) {
+if (!$resquery = mysqli_query($link, $requeteDelMedecin)) {
     die("Error:" . mysqli_errno($link) . ":" . mysqli_error($link));
 } else {
-    header("Location: ./gestionMedecin.php");
-    exit();
+    if (!$resquery = mysqli_query($link, $requeteDelRDV)) {
+        die("Error:" . mysqli_errno($link) . ":" . mysqli_error($link));
+    } else {
+        header("Location: ./gestionMedecin.php");
+        exit();
+    }
 }
 ?>
 
