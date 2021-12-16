@@ -16,7 +16,7 @@
         </a>
     </div>
     <div class="nav-menu">
-        <a class="nav-link" href="../stats/stats.php">
+        <a class="nav-link" href="./stats/stats.php">
             <h2>Stats</h2>
         </a>
         <a class="nav-link" href="./rendezvous/gestionRdv.php">
@@ -32,38 +32,25 @@
 </header>
 
 <body>
-    <div class="ajouter">
-        <a class="ajouter-usager-link" href="./usager/gestionUsager.php">
-            <h1>Ajouter un usager</h1>
-            <img class="icon-large" src="./public/add-icon.png" />
+    <h1 class="titre">Bienvenue sur votre gestionnaire de cabinet !</h1>
+    <div class="button-menu-group">
+        <a class="button-menu-group-link" href="./usager/gestionUsager.php">
+            <img class="button-menu-group-image" src="./public/usager-icon.png" alt="icon usager" />
+            Usagers
         </a>
-        <a class="ajouter-medecin-link" href="./medecin/gestionMedecin.php">
-            <h1>Ajouter un médecin</h1>
-            <img class="icon-large" src="./public/add-icon.png" />
+        <a class="button-menu-group-link" href="./medecin/gestionMedecin.php">
+            <img class="button-menu-group-image" src="./public/medecin-icon.png" alt="icon medecin" />
+            Médecins
+        </a>
+        <a class="button-menu-group-link" href="./rendezvous/gestionRdv.php">
+            <img class="button-menu-group-image" src="./public/calendar-icon.png" alt="icon calendrier">
+            Consultations
+        </a>
+        <a class="button-menu-group-link" href="./stats/stats.php">
+            <img class="button-menu-group-image" src="./public/stats-icon.png" alt="icon statistiques" />
+            Statistiques
         </a>
     </div>
-
-    <div class="rechercher">
-        <div class="rechercher-usager">
-            <h3>Rechercher un usager</h3>
-            <form action="./usager/rechercherUsager.php" method="post">
-                <input type="text" name="nom" placeholder="Nom">
-                <button class="search-ajouter" type="submit">
-                    <img class="icon-search-ajouter" src="./public/search-icon.png" />
-                </button>
-            </form>
-        </div>
-        <div class="rechercher-usager">
-            <h3>Recherche un médecin</h3>
-            <form action="./medecin/rechercherMedecin.php" method="post">
-                <input type="text" name="nom" placeholder="Nom">
-                <button class="search-ajouter" type="submit">
-                    <img class="icon-search-ajouter" src="./public/search-icon.png" />
-                </button>
-            </form>
-        </div>
-    </div>
-
 </body>
 
 </html>

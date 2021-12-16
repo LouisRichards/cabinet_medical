@@ -2,22 +2,38 @@
 <html>
 
 <head>
-    <title>Modifier contact</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Médecin</title>
+    <link href="../styles.css" rel="stylesheet">
 </head>
+
+<header>
+    <div class="logo">
+        <a class="logo-link" href="../index.php">
+            <img src="../public/logo.png" />
+        </a>
+    </div>
+    <div class="nav-menu">
+        <a class="nav-link" href="../stats/stats.php">
+            <h2>Stats</h2>
+        </a>
+        <a class="nav-link" href="./gestionRdv.php">
+            <h2>consultations</h2>
+        </a>
+        <a class="nav-link" href="../usager/gestionUsager.php">
+            <h2>usagers</h2>
+        </a>
+        <a class="nav-link" href="../medecin/gestionMedecin.php">
+            <h2>médecins</h2>
+        </a>
+    </div>
+</header>
 
 <body>
     <?php
-    $server = "localhost";
-    $login = "root";
-    $mdp = "";
-    $db = "cabinet";
-
-    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
-
-    if ($link->connect_errno) {
-        echo "Failed to connect to MySQL: " . $link->connect_error;
-        exit();
-    }
+    require("../components/configDB.php");
 
     $id = $_GET['id'];
 
@@ -31,17 +47,25 @@
         $row = mysqli_fetch_row($resquery);
     }
     ?>
-    <form method="post" attritbute="post" action="modifierMedecin.php?id='<?php echo $row[0]; ?>'">
-        <label>Civilité: </label>
-        <input type="text" name="civilite" value="<?php echo $row[1]; ?>"><br>
-        <label>Nom: </label>
-        <input type="text" name="nom" value="<?php echo $row[2]; ?>"><br>
-        <label>Prénom: </label>
-        <input type="text" name="prenom" value="<?php echo $row[3]; ?>"><br>
-        <input type='submit' name='submit' value='Modifier' />
-        <input type='reset' name='reset' value='Reset' />
-        <input type="button" onclick="window.location.href = '../index.php'" value="Retour" />
-    </form>
+    <div class="ajouter">
+        <div class="ajouter-medecin">
+            <h1 class="ajouter-titre">Modifier médecin</h1>
+            <form method="post" attritbute="post" action="modifierMedecin.php?id='<?php echo $row[0]; ?>'">
+                <label>Civilité: </label>
+                <input class="ajouter-input" type="text" name="civilite" value="<?php echo $row[1]; ?>"><br>
+                <label>Nom: </label>
+                <input class="ajouter-input" type="text" name="nom" value="<?php echo $row[2]; ?>"><br>
+                <label>Prénom: </label>
+                <input class="ajouter-input" type="text" name="prenom" value="<?php echo $row[3]; ?>"><br>
+                <div class="small-button-group">
+                    <input class="small-button" type='submit' name='submit' value='Modifier' />
+                    <input class="small-button" type='reset' name='reset' value='Reset' />
+                    <input class="small-button" type="button" onclick="window.location.href = '../index.php'" value="Retour" />
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?php
 
     $civilite = isset($_POST['civilite']) ? $_POST['civilite'] : $row[1];

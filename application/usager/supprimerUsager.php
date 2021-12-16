@@ -1,15 +1,5 @@
 <?php
-$server = "localhost";
-$login = "root";
-$mdp = "";
-$db = "cabinet";
-
-$link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
-
-if ($link->connect_errno) {
-    echo "Failed to connect to MySQL: " . $link->connect_error;
-    exit();
-}
+require("../components/configDB.php");
 
 $requeteDelUsager = 'DELETE FROM usager WHERE id_usager = "' . $_GET['id'] . '"';
 $requeteDelRDV = 'DELETE FROM rendez_vous WHERE id_usager = "' . $_GET['id'] . '"';

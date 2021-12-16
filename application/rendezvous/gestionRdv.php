@@ -9,43 +9,10 @@
     <link href="../styles.css" rel="stylesheet">
 </head>
 
-<header>
-    <div class="logo">
-        <a class="logo-link" href="../index.php">
-            <img src="../public/logo.png" />
-        </a>
-    </div>
-    <div class="nav-menu">
-        <a class="nav-link" href="../stats/stats.php">
-            <h2>Stats</h2>
-        </a>
-        <a class="active" href="./gestionRdv.php">
-            <h2>consultations</h2>
-        </a>
-        <a class="nav-link" href="../usager/gestionUsager.php">
-            <h2>usagers</h2>
-        </a>
-        <a class="nav-link" href="../medecin/gestionMedecin.php">
-            <h2>médecins</h2>
-        </a>
-    </div>
-</header>
+<?php include("../components/header.php"); ?>
 
 <body>
-    <?php
-    $server = "localhost";
-    $login = "root";
-    $mdp = "";
-    $db = "cabinet";
-
-    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
-
-    if ($link->connect_errno) {
-        echo "Failed to connect to MySQL: " . $link->connect_error;
-        exit();
-    }
-
-    ?>
+    <?php require("../components/configDB.php"); ?>
 
     <table class="table">
         <tr class="table-header">
@@ -81,8 +48,16 @@
         <td>" . $row[4] . "</td>
         <td>" . $row[5] . "</td>
         <td>" . $row[6] . "</td>
-        <td><a href='./modifierRdv.php?id_usager=" . $row[7] . "&id_medecin=" . $row[8] . "&date_RV=" . $row[4] . "&heure_RV=" . $row[5] . "&duree=" . $row[6] . "'>Modifier </a>
-        <td><a href='./supprimerRdv.php?id_usager=" . $row[7] . "&id_medecin=" . $row[8] . "&date_RV=" . $row[4] . "&heure_RV=" . $row[5] . "&duree=" . $row[6] . "'>Suprimer </a>
+        <td>
+            <a href='./modifierRdv.php?id_usager=" . $row[7] . "&id_medecin=" . $row[8] . "&date_RV=" . $row[4] . "&heure_RV=" . $row[5] . "&duree=" . $row[6] . "'>
+                <img src='../public/edit-icon.png' alt='edit icon' width='15'/>
+            </a>
+        </td>
+        <td>
+            <a href='./supprimerRdv.php?id_usager=" . $row[7] . "&id_medecin=" . $row[8] . "&date_RV=" . $row[4] . "&heure_RV=" . $row[5] . "&duree=" . $row[6] . "'>
+                <img src='../public/delete-icon.png' alt='edit icon' width='15'/>
+            </a>
+        </td>
       </tr>";
             }
         }
@@ -90,21 +65,12 @@
     </table>
 
     <?php
-    $server = "localhost";
-    $login = "root";
-    $mdp = "";
-    $db = "cabinet";
-
-    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
-
-    if ($link->connect_errno) {
-        echo "Failed to connect to MySQL: " . $link->connect_error;
-        exit();
-    }
 
     $getMedecin = 'SELECT * FROM medecin';
 
     $getClient = 'SELECT * FROM usager';
+
+
 
     ?>
 
@@ -145,16 +111,22 @@
                 <label>Heure du rendez-vous: </label>
                 <input class="ajouter-input" type="time" name="heure-rdv"><br>
                 <label>Durée du rendez-vous: </label>
+                <select class="ajouter-input" name="heure">
+                    <?php
+                    for ($i = 0; $i < 25; $i++) {
+                        echo '<option value="' . $i . '"> ' . $i . " heure" . '</option>';
+                    }
+                    ?>
+                </select><br>
                 <?php
-                echo '<select class="ajouter-input" name="heure" />';
-                for ($i = 0; $i < 25; $i++) {
-                    echo '<option value="' . $i . '"> ' . $i . " heure" . '</option>';
-                }
-                echo '</select><br>';
                 foreach (array("min", "sec") as $name) {
                     echo '<label></label><select class="ajouter-input" name="' . $name . '" />';
                     for ($i = 0; $i < 61; $i++) {
-                        echo '<option value="' . $i . '"> ' . $i . " " . $name . '</option>';
+                        if ($i == 30 && $name == "min") {
+                            echo '<option selected="selected" value="' . $i . '"> ' . $i . " " . $name . '</option>';
+                        } else {
+                            echo '<option value="' . $i . '"> ' . $i . " " . $name . '</option>';
+                        }
                     }
                     echo '</select><br>';
                 }

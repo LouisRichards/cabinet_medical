@@ -9,43 +9,13 @@
     <link href="../styles.css" rel="stylesheet">
 </head>
 
-<header>
-    <div class="logo">
-        <a class="logo-link" href="../index.php">
-            <img src="../public/logo.png" />
-        </a>
-    </div>
-    <div class="nav-menu">
-        <a class="nav-link" href="../stats/stats.php">
-            <h2>Stats</h2>
-        </a>
-        <a class="nav-link" href="../rendezvous/gestionRdv.php">
-            <h2>consultations</h2>
-        </a>
-        <a class="nav-link" href="../usager/gestionUsager.php">
-            <h2>usagers</h2>
-        </a>
-        <a class="active" href="./gestionMedecin.php">
-            <h2>médecins</h2>
-        </a>
-    </div>
-</header>
+<?php include("../components/header.php"); ?>
 
 <body>
     <?php
-    $server = "localhost";
-    $login = "root";
-    $mdp = "";
-    $db = "cabinet";
+    require("../components/configDB.php");
 
-    $link = mysqli_connect($server, $login, $mdp, $db) or die("Error " . mysqli_error($link));
-
-    if ($link->connect_errno) {
-        echo "Failed to connect to MySQL: " . $link->connect_error;
-        exit();
-    }
-
-    if (isset($_POST["nom"])) {
+    if (isset($_POST["nom"]) && $_POST["nom"] != "") {
         $requete = 'SELECT * FROM medecin WHERE nom = "' . $_POST["nom"] . '"';
     } else {
         $requete = 'SELECT * FROM medecin';
@@ -54,14 +24,12 @@
 
     ?>
 
-    <div class="rechercher-large">
-        <form action="./gestionUsager.php" method="post">
-            <input class="rechercher-large-bar" type="text" name="nom" placeholder="Nom">
-            <button class="search-large" type="submit">
-                <img class="icon-large" src="../public/search-icon.png" />
-            </button>
-        </form>
-    </div>
+    <form class="rechercher-large" action="./gestionUsager.php" method="post">
+        <input class="rechercher-large-bar" type="text" name="nom" placeholder="Nom">
+        <button class="search-large" type="submit">
+            <img class="icon-large" src="../public/search-icon.png" />
+        </button>
+    </form>
     <table class="table">
         <tr class="table-header">
             <th>Civilité</th>
@@ -84,8 +52,16 @@
         <td>" . $row[1] . "</td>
         <td>" . $row[2] . "</td>
         <td>" . $row[3] . "</td>
-        <td><a href='./modifierMedecin.php?id=" . $row[0] . "'>Modifier </a>
-        <td><a href='./supprimerMedecin.php?id=" . $row[0] . "'>Suprimer </a>
+        <td>
+            <a href='./modifierRdv.php?id=" . $row[0] . "'>
+                <img src='../public/edit-icon.png' alt='edit icon' width='15'/>
+            </a>
+        </td>
+        <td>
+            <a href='./supprimerRdv.php?id=" . $row[0] . "'>
+                <img src='../public/delete-icon.png' alt='edit icon' width='15'/>
+            </a>
+        </td>
       </tr>";
             }
         }
